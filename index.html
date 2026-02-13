@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio | Web & Slide Production</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <div class="container nav-container">
+    <div class="logo">My Portfolio</div>
+    <nav>
+      <ul>
+        <li><a href="#web">Web制作実績</a></li>
+        <li><a href="#slides">スライド制作実績</a></li>
+        <li><a href="contact.html" class="contact-btn">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Webサイト制作 × プレゼン資料制作</h1>
+    <p>
+      ビジネス成果につながるWebサイト制作と、
+      説得力あるスライド資料を制作しています。
+    </p>
+    <div class="hero-buttons">
+      <a href="#web" class="btn-primary">Web制作を見る</a>
+      <a href="#slides" class="btn-secondary">スライド制作を見る</a>
+    </div>
+  </div>
+</section>
+
+<section id="web" class="works-section">
+  <h2>Webサイト制作実績</h2>
+  <p class="section-description">
+    企業サイト・ブランドサイト・サービスLPなどの制作実績
+  </p>
+  <div id="web-list" class="works-grid"></div>
+</section>
+
+<section id="slides" class="works-section alt-bg">
+  <h2>スライド資料制作実績</h2>
+  <p class="section-description">
+    ビジネス提案資料・教育資料・未来テーマプレゼンなどの制作実績
+  </p>
+  <div id="slide-list" class="works-grid"></div>
+</section>
+
+<footer>
+  <p>© 2026 My Portfolio</p>
+</footer>
+
+<script>
+fetch("data/works.json")
+  .then(res => res.json())
+  .then(data => {
+
+    const webContainer = document.getElementById("web-list");
+    data.web.forEach(item => {
+      webContainer.innerHTML += `
+        <a href="${item.url}" target="_blank" class="work-card">
+          <h3>${item.title}</h3>
+          <span>View Website →</span>
+        </a>
+      `;
+    });
+
+    const slideContainer = document.getElementById("slide-list");
+    data.slides.forEach(item => {
+      slideContainer.innerHTML += `
+        <a href="${item.url}" target="_blank" class="work-card">
+          <h3>${item.title}</h3>
+          <span>View Presentation →</span>
+        </a>
+      `;
+    });
+
+  });
+</script>
+
+</body>
+</html>
