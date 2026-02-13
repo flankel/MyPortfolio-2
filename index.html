@@ -1,183 +1,79 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Portfolio</title>
-
-<style>
-body{
-  margin:0;
-  font-family:Arial, Helvetica, sans-serif;
-  background:#f5f7fb;
-}
-
-header{
-  background:#111827;
-  padding:16px;
-  color:white;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-
-header a{
-  color:#cbd5e1;
-  margin-left:20px;
-  text-decoration:none;
-}
-
-header a:hover{
-  color:white;
-}
-
-.hero{
-  padding:100px 20px;
-  background:linear-gradient(135deg,#1e293b,#0f172a);
-  color:white;
-  text-align:center;
-}
-
-.section{
-  padding:60px 20px;
-}
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:24px;
-}
-
-.card{
-  background:white;
-  border-radius:10px;
-  overflow:hidden;
-  box-shadow:0 5px 15px rgba(0,0,0,0.1);
-  transition:0.3s;
-  text-decoration:none;
-  color:#111;
-}
-
-.card:hover{
-  transform:translateY(-6px);
-}
-
-.card img{
-  width:100%;
-  height:180px;
-  object-fit:cover;
-}
-
-.card-body{
-  padding:16px;
-}
-
-.tag{
-  font-size:12px;
-  font-weight:bold;
-  margin-bottom:8px;
-  display:inline-block;
-  padding:4px 8px;
-  border-radius:20px;
-}
-
-.web-tag{
-  background:#e0f2fe;
-  color:#0369a1;
-}
-
-.slide-tag{
-  background:#ede9fe;
-  color:#6d28d9;
-}
-
-footer{
-  background:#111827;
-  color:#94a3b8;
-  text-align:center;
-  padding:30px;
-}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creative Portfolio | Web & Slide Production</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-<header>
-  <div><strong>My Portfolio</strong></div>
-  <div>
-    <a href="#web">Web制作</a>
-    <a href="#slides">スライド制作</a>
-    <a href="contact.html">お問い合わせ</a>
-  </div>
+<header class="navbar">
+  <div class="logo">CreativeStudio</div>
+  <nav>
+    <ul>
+      <li><a href="#web">Web制作実績</a></li>
+      <li><a href="#slide">スライド制作実績</a></li>
+      <li><a href="contact.html" class="contact-btn">お問い合わせ</a></li>
+    </ul>
+  </nav>
 </header>
 
 <section class="hero">
-  <h1>Web制作 × スライド制作</h1>
-  <p>成果に直結するWebサイトと、伝わるプレゼン資料を制作します。</p>
+  <div class="hero-overlay">
+    <h1>Webサイト制作 × スライド資料制作</h1>
+    <p>戦略的デザインで、成果につながるクリエイティブを。</p>
+    <div class="hero-buttons">
+      <a href="#web" class="primary-btn">Web制作を見る</a>
+      <a href="#slide" class="secondary-btn">スライド制作を見る</a>
+    </div>
+  </div>
 </section>
 
-<section id="web" class="section">
+<section id="web" class="portfolio-section">
   <h2>Webサイト制作実績</h2>
-  <div class="grid" id="webGrid"></div>
+  <div class="portfolio-grid" id="web-list"></div>
 </section>
 
-<section id="slides" class="section">
-  <h2>スライド制作実績</h2>
-  <div class="grid" id="slideGrid"></div>
+<section id="slide" class="portfolio-section dark">
+  <h2>スライド資料制作実績</h2>
+  <div class="portfolio-grid" id="slide-list"></div>
 </section>
 
 <footer>
-© 2026 Portfolio
+  <p>© 2026 CreativeStudio</p>
 </footer>
 
 <script>
-const projects = [
-{ name:"TaskFlow", repo:"TaskFlow", category:"SaaS", image:"https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80", desc:"業務効率化ツールのLP。" },
-{ name:"Axis Strategy", repo:"Axis-Strategy", category:"Consulting", image:"https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80", desc:"経営コンサル公式サイト。" },
-{ name:"Noble House", repo:"Noble-House", category:"Real Estate", image:"https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80", desc:"高級住宅ブランドサイト。" },
-{ name:"Minato Medical", repo:"Minato-Medical-Clinic", category:"Medical", image:"https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80", desc:"都心型クリニック。" },
-{ name:"Blue Harbor Coffee", repo:"Blue-Harbor-Coffee", category:"Cafe", image:"https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=800&q=80", desc:"カフェサイト。" },
-{ name:"VANGUARD", repo:"VANGUARD-TECHNOLOGIES", category:"Recruit", image:"https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80", desc:"採用サイト。" },
-{ name:"NEXUS WORKSPACE", repo:"NEXUS-WORKSPACE", category:"Co-working", image:"https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80", desc:"コワーキング紹介。" },
-{ name:"INNOVATION SUMMIT", repo:"INNOVATION-SUMMIT-2026", category:"Event", image:"https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80", desc:"イベントLP。" },
-{ name:"SkillStream", repo:"SkillStream", category:"Education", image:"https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80", desc:"オンラインスクール。" },
-{ name:"TRANS-WORLD", repo:"TRANS-WORLD", category:"Logistics", image:"https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80", desc:"物流企業サイト。" }
-];
+fetch("data.json")
+  .then(res => res.json())
+  .then(data => {
+    const webList = document.getElementById("web-list");
+    const slideList = document.getElementById("slide-list");
 
-const presentations = [
-{ name:"音楽スタディ", category:"教育", image:"https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=800&q=80", desc:"音楽テーマ資料。", link:"presentation.html?id=music-study" },
-{ name:"未来の教育", category:"AI", image:"https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80", desc:"教育の未来。", link:"presentation.html?id=future-of-education" },
-{ name:"地方創生", category:"マーケ", image:"https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=800&q=80", desc:"デジタル戦略。", link:"presentation.html?id=local-digital-marketing" },
-{ name:"宇宙ビジネス", category:"宇宙", image:"https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800&q=80", desc:"月面開発。", link:"presentation.html?id=space-business" }
-];
+    data.web.forEach(item => {
+      webList.innerHTML += `
+        <div class="card">
+          <div class="card-image web-bg"></div>
+          <div class="card-content">
+            <h3>${item.title}</h3>
+            <a href="${item.url}" target="_blank">View Site</a>
+          </div>
+        </div>`;
+    });
 
-const webGrid = document.getElementById("webGrid");
-const slideGrid = document.getElementById("slideGrid");
-
-projects.forEach(p=>{
-  const url=`https://flankel.github.io/${p.repo}/`;
-  webGrid.innerHTML+=`
-  <a href="${url}" target="_blank" class="card">
-    <img src="${p.image}">
-    <div class="card-body">
-      <span class="tag web-tag">${p.category}</span>
-      <h3>${p.name}</h3>
-      <p>${p.desc}</p>
-    </div>
-  </a>`;
-});
-
-presentations.forEach(s=>{
-  slideGrid.innerHTML+=`
-  <a href="${s.link}" target="_blank" class="card">
-    <img src="${s.image}">
-    <div class="card-body">
-      <span class="tag slide-tag">${s.category}</span>
-      <h3>${s.name}</h3>
-      <p>${s.desc}</p>
-    </div>
-  </a>`;
-});
+    data.slides.forEach(item => {
+      slideList.innerHTML += `
+        <div class="card">
+          <div class="card-image slide-bg"></div>
+          <div class="card-content">
+            <h3>${item.title}</h3>
+            <a href="${item.url}" target="_blank">View Slide</a>
+          </div>
+        </div>`;
+    });
+  });
 </script>
 
 </body>
