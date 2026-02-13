@@ -1,0 +1,26 @@
+{
+  "web": [
+    { "title": "TaskFlow", "url": "https://flankel.github.io/TaskFlow/" },
+    { "title": "Axis Strategy", "url": "https://flankel.github.io/Axis-Strategy/" },
+    { "title": "Noble House", "url": "https://flankel.github.io/Noble-House/" },
+    { "title": "Minato Medical Clinic", "url": "https://flankel.github.io/Minato-Medical-Clinic/" },
+    { "title": "Blue Harbor Coffee", "url": "https://flankel.github.io/Blue-Harbor-Coffee/" },
+    { "title": "Vanguard Technologies", "url": "https://flankel.github.io/VANGUARD-TECHNOLOGIES/" },
+    { "title": "Nexus Workspace", "url": "https://flankel.github.io/NEXUS-WORKSPACE/" },
+    { "title": "Innovation Summit 2026", "url": "https://flankel.github.io/INNOVATION-SUMMIT-2026/" },
+    { "title": "SkillStream", "url": "https://flankel.github.io/SkillStream/" },
+    { "title": "Trans World", "url": "https://flankel.github.io/TRANS-WORLD/" }
+  ],
+  "slides": [
+    { "title": "Music Study", "url": "https://flankel.github.io/MyPortfolio/presentation.html?id=music-study" },
+    { "title": "Future of Education", "url": "https://flankel.github.io/MyPortfolio/presentation.html?id=future-of-education" },
+    { "title": "Local Digital Marketing", "url": "https://flankel.github.io/MyPortfolio/presentation.html?id=local-digital-marketing" },
+    { "title": "Space Business", "url": "https://flankel.github.io/MyPortfolio/presentation.html?id=space-business" },
+    { "title": "Health Tech", "url": "https://flankel.github.io/MyPortfolio/presentation.html?id=health-tech" },
+    { "title": "Sustainable Fashion", "url": "https://flankel.github.io/MyPortfolio/presentation.html?id=sustainable-fashion" },
+    { "title": "Esports Social Impact", "url": "https://flankel.github.io/MyPortfolio/presentation.html?id=esports-social-impact" },
+    { "title": "Smart City Digital Twin", "url": "https://flankel.github.io/MyPortfolio/presentation.html?id=smart-city-digital-twin" },
+    { "title": "VR Cultural Understanding", "url": "https://flankel.github.io/MyPortfolio/presentation.html?id=vr-cultural-understanding" },
+    { "title": "Food Tech", "url": "https://flankel.github.io/MyPortfolio/presentation.html?id=food-tech" }
+  ]
+}
