@@ -49,30 +49,31 @@
 fetch("data/works.json")
   .then(res => res.json())
   .then(data => {
+
     const webList = document.getElementById("web-list");
     const slideList = document.getElementById("slide-list");
 
-    data.web.forEach(item => {
-      webList.innerHTML += `
+    function createCard(item){
+      return `
         <div class="card">
-          <div class="card-image web-bg"></div>
+          <div class="card-image">
+            <img src="${item.image}" alt="${item.title}">
+          </div>
           <div class="card-content">
             <h3>${item.title}</h3>
-            <a href="${item.url}" target="_blank">View Site</a>
+            <a href="${item.url}" target="_blank">View</a>
           </div>
         </div>`;
+    }
+
+    data.web.forEach(item => {
+      webList.innerHTML += createCard(item);
     });
 
     data.slides.forEach(item => {
-      slideList.innerHTML += `
-        <div class="card">
-          <div class="card-image slide-bg"></div>
-          <div class="card-content">
-            <h3>${item.title}</h3>
-            <a href="${item.url}" target="_blank">View Slide</a>
-          </div>
-        </div>`;
+      slideList.innerHTML += createCard(item);
     });
+
   });
 </script>
 
