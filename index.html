@@ -6,301 +6,348 @@
 <title>TechText Bridging</title>
 
 <style>
-
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
-}
-
+/* ===== Reset ===== */
+*{margin:0;padding:0;box-sizing:border-box}
 body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto;
+  color:#111;
   background:#fff;
-  color:#1d1d1f;
   overflow-x:hidden;
 }
 
-/* NAV */
-
-nav{
+/* ===== Navbar ===== */
+.nav{
   position:fixed;
   top:0;
   width:100%;
-  padding:16px 8%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:rgba(255,255,255,0.75);
-  backdrop-filter:blur(20px);
-  border-bottom:1px solid #eee;
+  backdrop-filter:blur(16px);
+  background:rgba(255,255,255,0.7);
   z-index:1000;
 }
 
+.nav-inner{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 20px;
+}
+
 .logo{
-  font-weight:600;
-  font-size:18px;
+  font-weight:700;
+  font-size:20px;
 }
 
-nav a{
-  margin-left:28px;
+.nav-links{
+  display:flex;
+  gap:30px;
+}
+
+.nav-links a{
   text-decoration:none;
-  color:#1d1d1f;
-  font-size:14px;
-  transition:.2s;
+  color:#111;
+  font-weight:500;
+  position:relative;
 }
 
-nav a:hover{ color:#0071e3; }
+.nav-links a::after{
+  content:"";
+  position:absolute;
+  bottom:-6px;
+  left:0;
+  width:0%;
+  height:2px;
+  background:#0071e3;
+  transition:.3s;
+}
 
-/* HERO (Parallax) */
+.nav-links a:hover::after{
+  width:100%;
+}
 
+/* ===== Hamburger ===== */
+.hamburger{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  cursor:pointer;
+}
+
+.hamburger span{
+  width:25px;
+  height:3px;
+  background:#111;
+  border-radius:2px;
+}
+
+/* ===== Mobile Menu ===== */
+.mobile-menu{
+  position:fixed;
+  top:0;
+  right:-100%;
+  width:70%;
+  height:100%;
+  background:#fff;
+  padding:80px 30px;
+  transition:.4s;
+  z-index:999;
+}
+
+.mobile-menu a{
+  display:block;
+  margin:20px 0;
+  font-size:20px;
+  text-decoration:none;
+  color:#111;
+}
+
+.mobile-menu.active{right:0}
+
+/* ===== Hero ===== */
 .hero{
   height:100vh;
-  background:url("https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1600&q=80") center/cover fixed;
   display:flex;
   align-items:center;
   justify-content:center;
   text-align:center;
   color:#fff;
-}
-
-.hero::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,.35);
-}
-
-.hero-content{
-  position:relative;
-  z-index:1;
+  background:
+    linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
+    url("https://images.unsplash.com/photo-1559027615-cd4628902d4a?q=80&w=2000") center/cover fixed;
 }
 
 .hero h1{
-  font-size:72px;
+  font-size:64px;
   font-weight:700;
   letter-spacing:-1px;
 }
 
-.hero p{
-  margin-top:20px;
-  font-size:28px;
-  opacity:.9;
-}
-
-/* SECTION */
-
-section{
-  padding:140px 8%;
-  background:#fff;
-}
-
-.section-title{
+/* ===== Sections ===== */
+.section{
+  padding:120px 20px;
   text-align:center;
-  font-size:48px;
-  font-weight:700;
-  margin-bottom:90px;
 }
 
-/* GRID */
+.container{
+  max-width:1200px;
+  margin:auto;
+}
 
+/* ===== Marker Title ===== */
+.marker{
+  display:inline-block;
+  font-size:38px;
+  font-weight:700;
+  margin-bottom:60px;
+  position:relative;
+}
+
+.marker::before{
+  content:"";
+  position:absolute;
+  left:-6px;
+  right:-6px;
+  bottom:8px;
+  height:18px;
+  background:linear-gradient(120deg,#ffd54f 0%,#ffd54f 100%);
+  z-index:-1;
+  transform:skewX(-8deg);
+}
+
+/* ===== Card Grid ===== */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-  gap:40px;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:28px;
 }
-
-/* CARD */
 
 .card{
-  background:#f5f5f7;
-  border-radius:28px;
+  background:#fff;
+  border-radius:18px;
   overflow:hidden;
-  text-decoration:none;
-  color:inherit;
-  transform:translateY(60px);
-  opacity:0;
-  transition:all .8s cubic-bezier(.2,.6,.2,1);
-}
-
-.card.show{
-  transform:translateY(0);
-  opacity:1;
+  box-shadow:0 12px 40px rgba(0,0,0,.08);
+  transition:.35s;
 }
 
 .card:hover{
-  transform:scale(1.03);
-  box-shadow:0 25px 50px rgba(0,0,0,.15);
+  transform:translateY(-8px);
+  box-shadow:0 20px 50px rgba(0,0,0,.12);
 }
 
 .card img{
   width:100%;
-  height:220px;
+  height:180px;
   object-fit:cover;
 }
 
 .card-body{
-  padding:30px;
+  padding:20px;
 }
 
-.card h3{
-  font-size:22px;
-  margin-bottom:8px;
+/* ===== Section Colors ===== */
+.web{
+  background:#f5f7fa;
 }
 
-.card p{
-  color:#6e6e73;
-  font-size:16px;
+.slides{
+  background:#0f172a;
+  color:#fff;
 }
 
-/* FOOTER */
+.slides .card{
+  background:#1e293b;
+  color:#fff;
+}
 
+/* ===== Scroll Animation ===== */
+.fade{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s;
+}
+
+.fade.show{
+  opacity:1;
+  transform:none;
+}
+
+/* ===== Footer ===== */
 footer{
   text-align:center;
-  padding:80px 20px;
-  color:#86868b;
-  font-size:14px;
+  padding:40px;
+  background:#111;
+  color:#fff;
 }
 
+/* ===== Responsive ===== */
+@media(max-width:768px){
+
+.hero h1{font-size:40px}
+
+.nav-links{display:none}
+.hamburger{display:flex}
+
+}
 </style>
 </head>
 
 <body>
 
-<nav>
-  <div class="logo">TechText Bridging</div>
-  <div>
-    <a href="#web">Web</a>
-    <a href="#slides">Slides</a>
+<!-- ===== NAV ===== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="logo">TechText Bridging</div>
+
+    <div class="nav-links">
+      <a href="#web">Web</a>
+      <a href="#slides">Slides</a>
+    </div>
+
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
   </div>
 </nav>
 
-<!-- HERO -->
+<div class="mobile-menu" id="menu">
+  <a href="#web" onclick="toggleMenu()">Web</a>
+  <a href="#slides" onclick="toggleMenu()">Slides</a>
+</div>
 
-<div class="hero">
-  <div class="hero-content">
-    <h1>TechText Bridging</h1>
-    <p>Web Development & Presentation Design</p>
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <h1>TechText Bridging</h1>
+</section>
+
+<!-- ===== Web Section ===== -->
+<section id="web" class="section web">
+  <div class="container fade">
+    <div class="marker">Webサイト制作実績</div>
+
+    <div class="grid">
+
+      <!-- 10 cards -->
+      <!-- 画像は例 -->
+      <script>
+      const webImages = [
+        "photo-1460925895917-afdab827c52f",
+        "photo-1559027615-cd4628902d4a",
+        "photo-1522542550221-31fd19575a2d",
+        "photo-1498050108023-c5249f4df085",
+        "photo-1555066931-4365d14bab8c",
+        "photo-1518779578993-ec3579fee39f",
+        "photo-1517694712202-14dd9538aa97",
+        "photo-1507238691740-187a5b1d37b8",
+        "photo-1486312338219-ce68d2c6f44d",
+        "photo-1492724441997-5dc865305da7"
+      ];
+
+      document.write(
+        webImages.map(img => `
+        <div class="card">
+          <img src="https://images.unsplash.com/${img}?q=80&w=1200">
+          <div class="card-body">Website Project</div>
+        </div>`).join("")
+      );
+      </script>
+
+    </div>
   </div>
-</div>
-
-<!-- WEB SECTION -->
-
-<section id="web">
-<h2 class="section-title">Web Development</h2>
-
-<div class="grid">
-
-<a class="card" href="https://flankel.github.io/TaskFlow/" target="_blank">
-<img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80">
-<div class="card-body"><h3>TaskFlow</h3><p>タスク管理サービス</p></div></a>
-
-<a class="card" href="https://flankel.github.io/Axis-Strategy/" target="_blank">
-<img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80">
-<div class="card-body"><h3>Axis Strategy</h3><p>コンサル企業サイト</p></div></a>
-
-<a class="card" href="https://flankel.github.io/Noble-House/" target="_blank">
-<img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80">
-<div class="card-body"><h3>Noble House</h3><p>高級不動産ブランド</p></div></a>
-
-<a class="card" href="https://flankel.github.io/Minato-Medical-Clinic/" target="_blank">
-<img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80">
-<div class="card-body"><h3>Medical Clinic</h3><p>医療機関サイト</p></div></a>
-
-<a class="card" href="https://flankel.github.io/Blue-Harbor-Coffee/" target="_blank">
-<img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=800&q=80">
-<div class="card-body"><h3>Blue Harbor Coffee</h3><p>カフェサイト</p></div></a>
-
-<a class="card" href="https://flankel.github.io/VANGUARD-TECHNOLOGIES/" target="_blank">
-<img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80">
-<div class="card-body"><h3>Vanguard Tech</h3><p>IT企業サイト</p></div></a>
-
-<a class="card" href="https://flankel.github.io/NEXUS-WORKSPACE/" target="_blank">
-<img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80">
-<div class="card-body"><h3>Nexus Workspace</h3><p>コワーキング</p></div></a>
-
-<a class="card" href="https://flankel.github.io/INNOVATION-SUMMIT-2026/" target="_blank">
-<img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80">
-<div class="card-body"><h3>Innovation Summit</h3><p>イベントサイト</p></div></a>
-
-<a class="card" href="https://flankel.github.io/SkillStream/" target="_blank">
-<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80">
-<div class="card-body"><h3>SkillStream</h3><p>教育プラットフォーム</p></div></a>
-
-<a class="card" href="https://flankel.github.io/TRANS-WORLD/" target="_blank">
-<img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80">
-<div class="card-body"><h3>Trans-World</h3><p>物流企業</p></div></a>
-
-</div>
 </section>
 
-<!-- SLIDES -->
+<!-- ===== Slides Section ===== -->
+<section id="slides" class="section slides">
+  <div class="container fade">
+    <div class="marker">スライド資料制作実績</div>
 
-<section id="slides">
-<h2 class="section-title">Presentation Design</h2>
+    <div class="grid">
 
-<div class="grid">
+      <script>
+      const slideImages = [
+        "photo-1552664730-d307ca884978",
+        "photo-1551836022-d5d88e9218df",
+        "photo-1531403009284-440f080d1e12",
+        "photo-1559136555-9303baea8ebd",
+        "photo-1521737604893-d14cc237f11d",
+        "photo-1556761175-4b46a572b786",
+        "photo-1573164574511-73c773193279",
+        "photo-1504384308090-c894fdcc538d",
+        "photo-1492724441997-5dc865305da7",
+        "photo-1543269865-cbf427effbad"
+      ];
 
-<a class="card" href="https://flankel.github.io/MyPortfolio/presentation.html?id=music-study" target="_blank">
-<img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=800&q=80">
-<div class="card-body"><h3>音楽スタディ</h3></div></a>
+      document.write(
+        slideImages.map(img => `
+        <div class="card">
+          <img src="https://images.unsplash.com/${img}?q=80&w=1200">
+          <div class="card-body">Slide Project</div>
+        </div>`).join("")
+      );
+      </script>
 
-<a class="card" href="https://flankel.github.io/MyPortfolio/presentation.html?id=future-of-education" target="_blank">
-<img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80">
-<div class="card-body"><h3>未来の教育</h3></div></a>
-
-<a class="card" href="https://flankel.github.io/MyPortfolio/presentation.html?id=local-digital-marketing" target="_blank">
-<img src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=800&q=80">
-<div class="card-body"><h3>地方創生</h3></div></a>
-
-<a class="card" href="https://flankel.github.io/MyPortfolio/presentation.html?id=space-business" target="_blank">
-<img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800&q=80">
-<div class="card-body"><h3>宇宙ビジネス</h3></div></a>
-
-<a class="card" href="https://flankel.github.io/MyPortfolio/presentation.html?id=health-tech" target="_blank">
-<img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80">
-<div class="card-body"><h3>ヘルステック</h3></div></a>
-
-<a class="card" href="https://flankel.github.io/MyPortfolio/presentation.html?id=sustainable-fashion" target="_blank">
-<img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=800&q=80">
-<div class="card-body"><h3>サステナブル</h3></div></a>
-
-<a class="card" href="https://flankel.github.io/MyPortfolio/presentation.html?id=esports-social-impact" target="_blank">
-<img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=80">
-<div class="card-body"><h3>eスポーツ</h3></div></a>
-
-<a class="card" href="https://flankel.github.io/MyPortfolio/presentation.html?id=smart-city-digital-twin" target="_blank">
-<img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&q=80">
-<div class="card-body"><h3>スマートシティ</h3></div></a>
-
-<a class="card" href="https://flankel.github.io/MyPortfolio/presentation.html?id=vr-cultural-understanding" target="_blank">
-<img src="https://images.unsplash.com/photo-1555212697-194d092e3b8f?w=800&q=80">
-<div class="card-body"><h3>VR体験</h3></div></a>
-
-<a class="card" href="https://flankel.github.io/MyPortfolio/presentation.html?id=food-tech" target="_blank">
-<img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80">
-<div class="card-body"><h3>フードテック</h3></div></a>
-
-</div>
+    </div>
+  </div>
 </section>
 
-<footer>© 2026 TechText Bridging</footer>
+<footer>
+© 2026 TechText Bridging
+</footer>
 
 <script>
+/* ===== Hamburger ===== */
+function toggleMenu(){
+  document.getElementById("menu").classList.toggle("active");
+}
 
-/* Scroll Animation */
-
-const cards=document.querySelectorAll('.card');
-
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add('show');
-    }
+/* ===== Scroll Animation ===== */
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add("show");
   });
-},{threshold:0.15});
+});
 
-cards.forEach(card=>observer.observe(card));
-
+document.querySelectorAll(".fade").forEach(el=>observer.observe(el));
 </script>
 
 </body>
