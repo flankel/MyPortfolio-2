@@ -41,13 +41,34 @@ nav{
 .menu a:hover{ color:#1a73e8; }
 
 .hero{
-  background:#1a73e8;
-  color:white;
-  text-align:center;
-  padding:120px 20px;
+  background-image:url("https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1600&q=80");
+  background-size:cover;
+  background-position:center;
+  height:420px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
-.hero h1{ font-size:48px; }
+.hero-overlay{
+  background:rgba(26,115,232,0.75); /* Googleブルー半透明 */
+  color:white;
+  text-align:center;
+  padding:60px 30px;
+  border-radius:12px;
+  backdrop-filter:blur(4px);
+}
+
+.hero-overlay h1{
+  font-size:48px;
+  margin-bottom:12px;
+}
+
+.hero-overlay p{
+  font-size:20px;
+  opacity:0.95;
+}
 
 .section-header{
   background:#ffffff;
@@ -135,8 +156,10 @@ footer{
 </nav>
 
 <section class="hero">
-  <h1>TechText Bridging</h1>
-  <p>AI × Technology × Professional Communication</p>
+  <div class="hero-overlay">
+    <h1>TechText Bridging</h1>
+    <p>Web Development & Presentation Design Portfolio</p>
+  </div>
 </section>
 
 <!-- ================= WEB ================= -->
