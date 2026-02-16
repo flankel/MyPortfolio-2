@@ -393,3 +393,65 @@ footer {
   font-weight: 600;
 }
 
+/* =========================
+   SECTION TITLE — PRO STYLE
+   ========================= */
+
+.section-title {
+  position: relative;
+  display: inline-block;
+  font-size: 2.4rem;
+  font-weight: 800;
+  margin: 0 auto 70px;
+  padding: 24px 40px;
+  text-align: center;
+  color: #fff;
+  background: linear-gradient(135deg,#0ea5e9,#2563eb);
+  border-radius: 14px;
+  box-shadow: 0 12px 35px rgba(0,0,0,.4);
+}
+
+/* 中央配置 */
+.portfolio-section .section-title {
+  display: table;
+}
+
+/* マーカー風ハイライト */
+.section-title::after {
+  content: "";
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: 18px;
+  height: 16px;
+  background: rgba(255,255,0,0.55);
+  z-index: -1;
+  transform: rotate(-1.5deg);
+  border-radius: 4px;
+}
+
+/* 日本語副題 */
+
+.section-title span {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: rgba(255,255,255,.85);
+  margin-top: 10px;
+}
+
+/* =========================
+   CARD DESCRIPTION STYLE
+   ========================= */
+
+.card-content p {
+  font-size: 0.9rem;
+  color: #cbd5e1;
+  line-height: 1.5;
+}
+
+.dark .card-content p {
+  color: #94a3b8;
+}
+
+
