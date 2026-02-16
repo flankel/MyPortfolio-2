@@ -106,16 +106,17 @@ body{
 
 /* ===== Hero ===== */
 .hero{
-  height:100vh;
+  background-image:url("https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1600&q=80");
+  background-size:cover;
+  background-position:center;
+  background-attachment:fixed; /* パララックス */
+  height:92vh;
   display:flex;
   align-items:center;
   justify-content:center;
-  text-align:center;
-  color:#fff;
-  background:
-    linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
-    url("https://images.unsplash.com/photo-1559027615-cd4628902d4a?q=80&w=2000") center/cover fixed;
+  position:relative;
 }
+
 
 .hero h1{
   font-size:64px;
@@ -158,9 +159,18 @@ body{
 /* ===== Card Grid ===== */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  grid-template-columns:repeat(2, 1fr); /* PC・タブレットは2枚 */
   gap:28px;
 }
+
+/* ===== スマホ：1枚表示 ===== */
+@media(max-width:768px){
+  .grid{
+    grid-template-columns:1fr; /* 1枚表示 */
+    gap:20px;
+  }
+}
+
 
 .card{
   background:#fff;
