@@ -98,19 +98,24 @@ section{
   padding:100px 20px;
 }
 
-h2{
-  text-align:center;
+/* ★ 見出し：マーカー風 */
+.marker{
+  display:inline;
   font-size:32px;
-  margin-bottom:50px;
+  font-weight:700;
+  background:linear-gradient(transparent 60%, #ffe066 60%);
+  padding:0 8px;
 }
 
-/* 背景色で対比 */
+/* ★ 背景色対比 */
 #web{
   background:#ffffff;
+  text-align:center;
 }
 
 #slides{
   background:#eef3ff;
+  text-align:center;
 }
 
 /* ===== グリッド ===== */
@@ -119,7 +124,7 @@ h2{
   grid-template-columns:repeat(2,1fr);
   gap:40px;
   max-width:1200px;
-  margin:auto;
+  margin:50px auto 0;
 }
 
 @media(max-width:768px){
@@ -187,13 +192,13 @@ h2{
 
 <!-- Web制作 -->
 <section id="web">
-<h2>Web Development Portfolio</h2>
+<h2><span class="marker">Web Development</span></h2>
 <div id="webGrid" class="grid"></div>
 </section>
 
 <!-- スライド制作 -->
 <section id="slides">
-<h2>Presentation Design Portfolio</h2>
+<h2><span class="marker">Presentation Design</span></h2>
 <div id="slideGrid" class="grid"></div>
 </section>
 
