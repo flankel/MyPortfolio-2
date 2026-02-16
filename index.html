@@ -9,43 +9,24 @@
 
 <style>
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Inter',sans-serif;
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Inter',sans-serif;}
 
-body{
-  background:#f5f7fb;
-  color:#202124;
-}
+body{background:#f5f7fb;color:#202124;}
 
-/* ===== NAVBAR ===== */
+/* NAV */
 
 nav{
-  position:sticky;
-  top:0;
+  position:sticky;top:0;
   background:#fff;
   padding:18px 60px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+  display:flex;justify-content:space-between;align-items:center;
   box-shadow:0 2px 12px rgba(0,0,0,0.08);
   z-index:1000;
 }
 
-.logo{
-  font-size:22px;
-  font-weight:700;
-  color:#1a73e8;
-}
+.logo{font-size:22px;font-weight:700;color:#1a73e8;}
 
-nav ul{
-  display:flex;
-  gap:36px;
-  list-style:none;
-}
+nav ul{display:flex;gap:36px;list-style:none;}
 
 nav a{
   text-decoration:none;
@@ -56,43 +37,31 @@ nav a{
   transition:.3s;
 }
 
-/* hover underline animation */
-
 nav a::after{
   content:"";
   position:absolute;
-  left:0;
-  bottom:-4px;
-  width:0;
-  height:3px;
+  left:0;bottom:-4px;
+  width:0;height:3px;
   background:#1a73e8;
   transition:.3s;
 }
 
-nav a:hover{
-  color:#1a73e8;
-}
+nav a:hover{color:#1a73e8;}
+nav a:hover::after{width:100%;}
 
-nav a:hover::after{
-  width:100%;
-}
-
-/* ===== HERO ===== */
+/* HERO */
 
 .hero{
   height:460px;
   background:url("https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=1600&q=80") center/cover;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  display:flex;align-items:center;justify-content:center;
   text-align:center;
 }
 
 .hero h1{
   font-size:56px;
-  font-weight:700;
   color:#fff;
-  text-shadow:0 4px 20px rgba(0,0,0,0.6);
+  text-shadow:0 4px 20px rgba(0,0,0,0.65);
 }
 
 .hero p{
@@ -102,13 +71,9 @@ nav a:hover::after{
   text-shadow:0 3px 12px rgba(0,0,0,0.6);
 }
 
-/* ===== SECTIONS ===== */
+/* SECTION */
 
-section{
-  padding:80px 10%;
-}
-
-/* Marker style heading */
+section{padding:80px 10%;}
 
 .section-title{
   font-size:34px;
@@ -121,17 +86,15 @@ section{
 .section-title::after{
   content:"";
   position:absolute;
-  left:-6px;
-  bottom:2px;
-  width:105%;
-  height:16px;
+  left:-6px;bottom:2px;
+  width:105%;height:16px;
   background:#fbbc05;
   z-index:-1;
   transform:rotate(-1.5deg);
   border-radius:4px;
 }
 
-/* ===== GRID ===== */
+/* GRID */
 
 .grid{
   display:grid;
@@ -139,7 +102,7 @@ section{
   gap:28px;
 }
 
-/* ===== CARD ===== */
+/* CARD */
 
 .card{
   background:#fff;
@@ -147,6 +110,8 @@ section{
   overflow:hidden;
   box-shadow:0 6px 18px rgba(0,0,0,0.08);
   transition:.35s;
+  text-decoration:none;
+  color:inherit;
 }
 
 .card:hover{
@@ -160,9 +125,7 @@ section{
   object-fit:cover;
 }
 
-.card-body{
-  padding:18px;
-}
+.card-body{padding:18px;}
 
 .card-body h3{
   font-size:18px;
@@ -200,51 +163,107 @@ footer{
   </div>
 </section>
 
+<!-- WEB PORTFOLIO -->
+
 <section id="web">
-  <h2 class="section-title">Web Development Portfolio<br>Webサイト制作実績</h2>
+<h2 class="section-title">Web Development Portfolio<br>Webサイト制作実績</h2>
 
-  <div class="grid">
+<div class="grid">
 
-    <!-- 10 Web Projects -->
+<a class="card" href="https://flankel.github.io/TaskFlow/" target="_blank">
+<img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80">
+<div class="card-body"><h3>TaskFlow</h3><p>タスク管理サービスのランディングページ</p></div></a>
 
-    <div class="card"><img src="https://picsum.photos/400/300?1"><div class="card-body"><h3>Corporate Site</h3><p>企業サイト</p></div></div>
-    <div class="card"><img src="https://picsum.photos/400/300?2"><div class="card-body"><h3>Portfolio Site</h3><p>ポートフォリオ</p></div></div>
-    <div class="card"><img src="https://picsum.photos/400/300?3"><div class="card-body"><h3>Landing Page</h3><p>LP制作</p></div></div>
-    <div class="card"><img src="https://picsum.photos/400/300?4"><div class="card-body"><h3>E-commerce</h3><p>ECサイト</p></div></div>
-    <div class="card"><img src="https://picsum.photos/400/300?5"><div class="card-body"><h3>Startup Site</h3><p>スタートアップ</p></div></div>
-    <div class="card"><img src="https://picsum.photos/400/300?6"><div class="card-body"><h3>Blog Platform</h3><p>ブログ</p></div></div>
-    <div class="card"><img src="https://picsum.photos/400/300?7"><div class="card-body"><h3>Media Site</h3><p>メディア</p></div></div>
-    <div class="card"><img src="https://picsum.photos/400/300?8"><div class="card-body"><h3>Educational Site</h3><p>教育</p></div></div>
-    <div class="card"><img src="https://picsum.photos/400/300?9"><div class="card-body"><h3>Service Site</h3><p>サービス</p></div></div>
-    <div class="card"><img src="https://picsum.photos/400/300?10"><div class="card-body"><h3>Event Site</h3><p>イベント</p></div></div>
+<a class="card" href="https://flankel.github.io/Axis-Strategy/" target="_blank">
+<img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80">
+<div class="card-body"><h3>Axis Strategy</h3><p>コンサルティング企業向けコーポレートサイト</p></div></a>
 
-  </div>
+<a class="card" href="https://flankel.github.io/Noble-House/" target="_blank">
+<img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80">
+<div class="card-body"><h3>Noble House</h3><p>高級不動産・住宅ブランドの紹介サイト</p></div></a>
+
+<a class="card" href="https://flankel.github.io/Minato-Medical-Clinic/" target="_blank">
+<img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=800&q=80">
+<div class="card-body"><h3>Minato Medical Clinic</h3><p>医療機関向けの信頼感重視デザイン</p></div></a>
+
+<a class="card" href="https://flankel.github.io/Blue-Harbor-Coffee/" target="_blank">
+<img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=800&q=80">
+<div class="card-body"><h3>Blue Harbor Coffee</h3><p>カフェブランドのプロモーションサイト</p></div></a>
+
+<a class="card" href="https://flankel.github.io/VANGUARD-TECHNOLOGIES/" target="_blank">
+<img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80">
+<div class="card-body"><h3>VANGUARD TECHNOLOGIES</h3><p>先端IT企業の企業紹介ページ</p></div></a>
+
+<a class="card" href="https://flankel.github.io/NEXUS-WORKSPACE/" target="_blank">
+<img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=80">
+<div class="card-body"><h3>NEXUS WORKSPACE</h3><p>コワーキングスペースのサービスサイト</p></div></a>
+
+<a class="card" href="https://flankel.github.io/INNOVATION-SUMMIT-2026/" target="_blank">
+<img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=80">
+<div class="card-body"><h3>INNOVATION SUMMIT 2026</h3><p>国際ビジネスイベントの特設サイト</p></div></a>
+
+<a class="card" href="https://flankel.github.io/SkillStream/" target="_blank">
+<img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80">
+<div class="card-body"><h3>SkillStream</h3><p>オンライン教育プラットフォームの紹介サイト</p></div></a>
+
+<a class="card" href="https://flankel.github.io/TRANS-WORLD/" target="_blank">
+<img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&q=80">
+<div class="card-body"><h3>TRANS-WORLD</h3><p>国際物流・輸送企業のコーポレートサイト</p></div></a>
+
+</div>
 </section>
+
+<!-- SLIDES -->
 
 <section id="slides">
-  <h2 class="section-title">Presentation Design Portfolio<br>スライド資料制作実績</h2>
+<h2 class="section-title">Presentation Design Portfolio<br>スライド資料制作実績</h2>
 
-  <div class="grid">
+<div class="grid">
 
-    <!-- 10 Slide Projects -->
+<a class="card" href="https://flankel.github.io/MyPortfolio/presentation.html?id=music-study" target="_blank">
+<img src="https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=800&q=80">
+<div class="card-body"><h3>流麗な音楽スタディで目指せるスライド</h3><p>音楽教育の可能性を紹介するプレゼン資料</p></div></a>
 
-    <div class="card"><img src="https://picsum.photos/400/300?11"><div class="card-body"><h3>Business Proposal</h3><p>提案資料</p></div></div>
-    <div class="card"><img src="https://picsum.photos/400/300?12"><div class="card-body"><h3>Startup Pitch</h3><p>ピッチ資料</p></div></div>
-    <div class="card"><img src="https://picsum.photos/400/300?13"><div class="card-body"><h3>Marketing Plan</h3><p>マーケ資料</p></div></div>
-    <div class="card"><img src="https://picsum.photos/400/300?14"><div class="card-body"><h3>Research Report</h3><p>調査報告</p></div></div>
-    <div class="card"><img src="https://picsum.photos/400/300?15"><div class="card-body"><h3>Product Launch</h3><p>製品発表</p></div></div>
-    <div class="card"><img src="https://picsum.photos/400/300?16"><div class="card-body"><h3>Annual Report</h3><p>年次報告</p></div></div>
-    <div class="card"><img src="https://picsum.photos/400/300?17"><div class="card-body"><h3>Training Slides</h3><p>研修資料</p></div></div>
-    <div class="card"><img src="https://picsum.photos/400/300?18"><div class="card-body"><h3>Consulting Deck</h3><p>コンサル資料</p></div></div>
-    <div class="card"><img src="https://picsum.photos/400/300?19"><div class="card-body"><h3>Academic Presentation</h3><p>学会発表</p></div></div>
-    <div class="card"><img src="https://picsum.photos/400/300?20"><div class="card-body"><h3>Project Review</h3><p>レビュー資料</p></div></div>
+<a class="card" href="https://flankel.github.io/MyPortfolio/presentation.html?id=future-of-education" target="_blank">
+<img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80">
+<div class="card-body"><h3>未来の教育</h3><p>次世代教育の方向性を解説した資料</p></div></a>
 
-  </div>
+<a class="card" href="https://flankel.github.io/MyPortfolio/presentation.html?id=local-digital-marketing" target="_blank">
+<img src="https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=800&q=80">
+<div class="card-body"><h3>地方創生と伝統工芸</h3><p>地域産業のデジタル戦略を提案</p></div></a>
+
+<a class="card" href="https://flankel.github.io/MyPortfolio/presentation.html?id=space-business" target="_blank">
+<img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=800&q=80">
+<div class="card-body"><h3>宇宙ビジネス</h3><p>急成長する宇宙産業の市場分析</p></div></a>
+
+<a class="card" href="https://flankel.github.io/MyPortfolio/presentation.html?id=health-tech" target="_blank">
+<img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80">
+<div class="card-body"><h3>ヘルステック</h3><p>医療×テクノロジーの革新事例を紹介</p></div></a>
+
+<a class="card" href="https://flankel.github.io/MyPortfolio/presentation.html?id=sustainable-fashion" target="_blank">
+<img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=800&q=80">
+<div class="card-body"><h3>サステナブルファッション</h3><p>環境配慮型ファッションの未来</p></div></a>
+
+<a class="card" href="https://flankel.github.io/MyPortfolio/presentation.html?id=esports-social-impact" target="_blank">
+<img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=800&q=80">
+<div class="card-body"><h3>eスポーツ</h3><p>eスポーツの社会的影響と市場拡大</p></div></a>
+
+<a class="card" href="https://flankel.github.io/MyPortfolio/presentation.html?id=smart-city-digital-twin" target="_blank">
+<img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?w=800&q=80">
+<div class="card-body"><h3>スマートシティ</h3><p>都市のデジタル化と未来の生活</p></div></a>
+
+<a class="card" href="https://flankel.github.io/MyPortfolio/presentation.html?id=vr-cultural-understanding" target="_blank">
+<img src="https://images.unsplash.com/photo-1555212697-194d092e3b8f?w=800&q=80">
+<div class="card-body"><h3>VR体験デザイン</h3><p>没入型体験を活用した新しい表現手法</p></div></a>
+
+<a class="card" href="https://flankel.github.io/MyPortfolio/presentation.html?id=food-tech" target="_blank">
+<img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=800&q=80">
+<div class="card-body"><h3>フードテック</h3><p>食料問題を解決する最先端技術</p></div></a>
+
+</div>
 </section>
 
-<footer>
-  © 2026 TechText Bridging
-</footer>
+<footer>© 2026 TechText Bridging</footer>
 
 </body>
 </html>
