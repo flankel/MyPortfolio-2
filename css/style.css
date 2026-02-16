@@ -298,3 +298,98 @@ footer {
   background: #111;
   color: white;
 }
+/* ===== Modern Background ===== */
+
+.modern-bg {
+  background: linear-gradient(135deg, #0f172a, #020617);
+  position: relative;
+  overflow: hidden;
+  color: white;
+}
+
+.modern-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+}
+
+/* ===== Section Title ===== */
+
+.section-title {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 60px;
+}
+
+.section-title span {
+  display: block;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #94a3b8;
+  margin-top: 8px;
+}
+
+/* ===== Card clickable ===== */
+
+.card {
+  background: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  transition: 0.3s;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+}
+
+.dark .card {
+  background: #1c1c1c;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 45px rgba(0,0,0,0.4);
+}
+
+.card-image img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.card-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.card-content h3 {
+  margin-bottom: 10px;
+}
+
+/* ===== Hover Overlay ===== */
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,.85), rgba(0,0,0,.2));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: .3s;
+}
+
+.card:hover .card-overlay {
+  opacity: 1;
+}
+
+.card-overlay span {
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
