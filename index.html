@@ -13,14 +13,12 @@
 
   <div class="logo">PORTFOLIO</div>
 
-  <!-- ハンバーガー -->
   <div class="hamburger" onclick="toggleMenu()">
     <span></span>
     <span></span>
     <span></span>
   </div>
 
-  <!-- メニュー -->
   <nav id="navMenu">
     <a href="#web">Web制作</a>
     <a href="#slides">スライド制作</a>
@@ -39,13 +37,21 @@
   </div>
 </section>
 
-<section id="web" class="portfolio-section">
-  <h2>Webサイト制作実績</h2>
+<!-- ===== Web Portfolio ===== -->
+<section id="web" class="portfolio-section modern-bg">
+  <h2 class="section-title">
+    Web Development Portfolio
+    <span>Webサイト制作実績</span>
+  </h2>
   <div class="portfolio-grid" id="web-list"></div>
 </section>
 
-<section id="slides" class="portfolio-section dark">
-  <h2>スライド資料制作実績</h2>
+<!-- ===== Slide Portfolio ===== -->
+<section id="slides" class="portfolio-section modern-bg dark">
+  <h2 class="section-title">
+    Presentation Design Portfolio
+    <span>スライド資料制作実績</span>
+  </h2>
   <div class="portfolio-grid" id="slide-list"></div>
 </section>
 
@@ -63,15 +69,19 @@ fetch("data/works.json")
 
     function createCard(item){
       return `
-        <div class="card">
+        <a class="card" href="${item.url}" target="_blank">
           <div class="card-image">
             <img src="${item.image}" alt="${item.title}">
           </div>
+
           <div class="card-content">
             <h3>${item.title}</h3>
-            <a href="${item.url}" target="_blank">View</a>
           </div>
-        </div>`;
+
+          <div class="card-overlay">
+            <span>Click to View →</span>
+          </div>
+        </a>`;
     }
 
     data.web.forEach(item => {
