@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Presentation Viewer | TechText Bridging</title>
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet"/>
+
+<style>
+body{
+  font-family:"Inter","Noto Sans JP",sans-serif;
+  background:#f5f5f7;
+}
+
+/* ナビバー（Apple風） */
+.nav-blur{
+  backdrop-filter: blur(14px);
+  background: rgba(255,255,255,0.75);
+}
+
+/* PDF表示領域 */
+.pdf-container{
+  height:60vh;
+}
+
+@media(min-width:768px){
+  .pdf-container{
+    height:auto;
+    aspect-ratio:16/9;
+  }
+}
+</style>
+</head>
+
+<body class="text-slate-800 flex flex-col min-h-screen">
+
+<!-- ===== NAVBAR ===== -->
+<header class="nav-blur border-b border-gray-200 sticky top-0 z-50">
+  <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
+
+    <a href="index.html" class="font-bold text-lg tracking-tight hover:opacity-70 transition">
+      TechText Bridging
+    </a>
+
+    <a href="index.html"
+      class="text-sm font-medium text-slate-600 hover:text-black transition">
+      ← Back
+    </a>
+
+  </div>
+</header>
+
+
+<!-- ===== MAIN ===== -->
+<main class="flex-grow py-10 md:py-16 px-4">
+
+<div class="max-w-5xl mx-auto">
+
+  <!-- ===== TITLE ===== -->
+  <div class="text-center mb-10">
+
+    <span id="p-category"
+      class="text-xs font-semibold tracking-widest text-slate-500 uppercase block mb-3">
+      Category
+    </span>
+
+    <h1 id="p-title"
+      class="text-2xl md:text-4xl font-extrabold text-black leading-tight">
+      読み込み中...
+    </h1>
+
+    <p id="p-desc"
+      class="text-sm md:text-base text-slate-500 mt-4 max-w-2xl mx-auto">
+    </p>
+
+  </div>
+
+
+  <!-- ===== PDF CARD ===== -->
+  <div class="bg-white rounded-3xl shadow-xl border border-gray-200 overflow-hidden">
+
+    <!-- モバイル用 -->
+    <div class="md:hidden bg-gray-50 px-4 py-3 text-center border-b">
+      <p class="text-xs font-semibold mb-2">
+        表示されない場合はこちら
+      </p>
+
+      <a id="btn-mobile-open"
+        target="_blank"
+        class="block bg-black text-white px-5 py-2 rounded-full text-sm font-semibold hover:opacity-80 transition">
+        PDFを開く
+      </a>
+    </div>
+
+
+    <!-- PDF -->
+    <div class="pdf-container bg-gray-100">
+      <iframe id="pdf-frame"
+        class="w-full h-full border-0"
+        allow="fullscreen"></iframe>
+    </div>
+
+
+    <!-- PC用 -->
+    <div class="bg-gray-50 px-6 py-4 border-t flex flex-col md:flex-row items-center justify-between gap-4">
+
+      <p class="text-xs text-gray-500 text-center md:text-left">
+        表示されない場合はダウンロードしてください
+      </p>
+
+      <a id="btn-download"
+        download
+        class="bg-white border px-5 py-2 rounded-lg text-sm font-semibold hover:bg-gray-100 transition">
+        PDFダウンロード
+      </a>
+
+    </div>
+  </div>
+
+
+  <!-- ===== BACK BUTTON ===== -->
+  <div class="text-center mt-12">
+    <a href="index.html#presentations"
+      class="inline-block border px-8 py-3 rounded-full text-sm font-semibold hover:bg-black hover:text-white transition">
+      一覧に戻る
+    </a>
+  </div>
+
+</div>
+</main>
+
+
+<!-- ===== FOOTER ===== -->
+<footer class="bg-black text-gray-500 text-center py-8 text-xs mt-auto">
+  © 2026 TechText Bridging
+</footer>
+
+
+
+<!-- ===== SCRIPT（元のまま） ===== -->
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const presentationId = urlParams.get("id");
+
+const presentations = {
+  "music-study": {
+  title:"流麗な音楽スタディで目指せるスライド",
+  category:"Music / Education",
+  desc:"音楽をテーマにした魅力的で流麗なプレゼンテーションデザインについて。",
+  pdfPath:"assets/music-study.pdf"
+  },
+  "future-of-education":{
+  title:"未来の教育：パーソナライズされた学習体験のデザイン",
+  category:"Education / AI",
+  desc:"AIが個々に最適化する未来の教育システムを提案。",
+  pdfPath:"assets/future-of-education.pdf"
+  },
+  "local-digital-marketing":{
+  title:"地方創生と伝統工芸のデジタルマーケティング戦略",
+  category:"Regional Revitalization / Marketing",
+  desc:"伝統工芸をデジタルで世界に。成功戦略と具体的施策。",
+  pdfPath:"assets/local-digital-marketing.pdf"
+  },
+  "space-business":{
+  title:"宇宙ビジネスの新たなフロンティア：月面資源開発の可能性",
+  category:"Space / Business",
+  desc:"月面資源開発の技術、経済、国際協力の可能性を探る。",
+  pdfPath:"assets/space-business.pdf"
+  },
+  "health-tech":{
+  title:"ヘルステックの進化：予防医療と個別化された健康管理",
+  category:"Medical / Healthcare",
+  desc:"ウェアラブル、AI診断で実現する未来の医療システム。",
+  pdfPath:"assets/health-tech.pdf"
+  },
+  "sustainable-fashion":{
+  title:"サステナブルファッションの挑戦：循環型経済への転換",
+  category:"Fashion / Sustainability",
+  desc:"ファッション業界が持続可能なビジネスモデルへ。",
+  pdfPath:"assets/sustainable-fashion.pdf"
+  },
+  "esports-social-impact":{
+  title:"eスポーツの社会的影響：新たなキャリアとコミュニティ形成",
+  category:"eSports / Society",
+  desc:"eスポーツが若者に与える影響、キャリア、社会性。",
+  pdfPath:"assets/esports-social-impact.pdf"
+  },
+  "smart-city-digital-twin":{
+  title:"デジタルツインが拓くスマートシティの未来",
+  category:"Urban Development / Technology",
+  desc:"デジタルツインで都市を最適化。スマートシティの可能性。",
+  pdfPath:"assets/smart-city-digital-twin.pdf"
+  },
+  "vr-cultural-understanding":{
+  title:"異文化理解を深めるVR体験デザイン",
+  category:"VR / Culture",
+  desc:"VRで没入する異文化体験、教育・ビジネスへの応用。",
+  pdfPath:"assets/vr-cultural-understanding.pdf"
+  },
+  "food-tech":{
+  title:"フードテックの最前線：食糧危機と未来の食卓",
+  category:"Food / Technology",
+  desc:"代替肉、植物工場など、食糧危機を乗り越える技術。",
+  pdfPath:"assets/food-tech.pdf"
+  }
+};
+
+const data = presentations[presentationId];
+
+const titleEl=document.getElementById("p-title");
+const catEl=document.getElementById("p-category");
+const descEl=document.getElementById("p-desc");
+const frameEl=document.getElementById("pdf-frame");
+const downloadBtn=document.getElementById("btn-download");
+const mobileOpenBtn=document.getElementById("btn-mobile-open");
+
+if(data){
+  document.title=`${data.title} | TechText Bridging`;
+  titleEl.textContent=data.title;
+  catEl.textContent=data.category;
+  descEl.textContent=data.desc;
+  
+  frameEl.src=data.pdfPath;
+  downloadBtn.href=data.pdfPath;
+  mobileOpenBtn.href=data.pdfPath;
+  }else{
+  titleEl.textContent="資料が見つかりません";
+  catEl.textContent="Error";
+  descEl.textContent="URLを確認してください";
+  downloadBtn.style.display="none";
+  mobileOpenBtn.style.display="none";
+}
+</script>
+
+</body>
+</html>
