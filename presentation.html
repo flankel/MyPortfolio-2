@@ -14,15 +14,70 @@
 body{
   font-family:"Inter","Noto Sans JP",sans-serif;
   background:#f5f5f7;
+  margin:0;
+  color:#111;
 }
 
-/* ナビバー（Apple風） */
-.nav-blur{
-  backdrop-filter: blur(14px);
-  background: rgba(255,255,255,0.75);
+/* ===== index.html と同一ナビバー ===== */
+.nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(20px);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 20px;
+  z-index:1000;
+  box-shadow:0 2px 10px rgba(0,0,0,.05);
+  box-sizing:border-box;
 }
 
-/* PDF表示領域 */
+.nav-logo{font-weight:600;}
+
+.nav-links a{
+  margin-left:24px;
+  text-decoration:none;
+  color:#111;
+  font-weight:500;
+  position:relative;
+}
+
+.nav-links a::after{
+  content:"";
+  position:absolute;
+  left:0; bottom:-6px;
+  width:0; height:2px;
+  background:#0071e3;
+  transition:.3s;
+}
+
+.nav-links a:hover::after{width:100%;}
+
+/* ハンバーガー */
+.hamburger{display:none; flex-direction:column; cursor:pointer;}
+.hamburger span{width:24px;height:3px;background:#111;margin:4px 0;}
+
+.mobile-menu{
+  display:none;
+  position:fixed;
+  top:60px; right:0;
+  width:220px;
+  background:#fff;
+  box-shadow:-5px 0 20px rgba(0,0,0,.1);
+  padding:20px;
+  flex-direction:column;
+  z-index:999;
+}
+
+.mobile-menu a{
+  margin:12px 0;
+  text-decoration:none;
+  color:#111;
+}
+
+/* ===== PDF表示領域 ===== */
 .pdf-container{
   height:60vh;
 }
@@ -33,26 +88,35 @@ body{
     aspect-ratio:16/9;
   }
 }
+
+/* ナビ分の余白 */
+main{padding-top:90px;}
+
+@media(max-width:768px){
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+}
 </style>
 </head>
 
-<body class="text-slate-800 flex flex-col min-h-screen">
+<body class="flex flex-col min-h-screen">
 
-<!-- ===== NAVBAR ===== -->
-<header class="nav-blur border-b border-gray-200 sticky top-0 z-50">
-  <div class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center">
+<!-- ===== NAVBAR（統一版） ===== -->
+<div class="nav">
+  <div class="nav-logo">TechText Bridging</div>
 
-    <a href="index.html" class="font-bold text-lg tracking-tight hover:opacity-70 transition">
-      TechText Bridging
-    </a>
-
-    <a href="index.html"
-      class="text-sm font-medium text-slate-600 hover:text-black transition">
-      ← Back
-    </a>
-
+  <div class="nav-links">
+    <a href="index.html">← 戻る</a>
   </div>
-</header>
+
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</div>
+
+<div id="mobileMenu" class="mobile-menu">
+  <a href="index.html">← 戻る</a>
+</div>
 
 
 <!-- ===== MAIN ===== -->
@@ -60,7 +124,7 @@ body{
 
 <div class="max-w-5xl mx-auto">
 
-  <!-- ===== TITLE ===== -->
+  <!-- TITLE -->
   <div class="text-center mb-10">
 
     <span id="p-category"
@@ -80,10 +144,10 @@ body{
   </div>
 
 
-  <!-- ===== PDF CARD ===== -->
+  <!-- PDF CARD -->
   <div class="bg-white rounded-3xl shadow-xl border border-gray-200 overflow-hidden">
 
-    <!-- モバイル用 -->
+    <!-- モバイル -->
     <div class="md:hidden bg-gray-50 px-4 py-3 text-center border-b">
       <p class="text-xs font-semibold mb-2">
         表示されない場合はこちら
@@ -96,7 +160,6 @@ body{
       </a>
     </div>
 
-
     <!-- PDF -->
     <div class="pdf-container bg-gray-100">
       <iframe id="pdf-frame"
@@ -104,8 +167,7 @@ body{
         allow="fullscreen"></iframe>
     </div>
 
-
-    <!-- PC用 -->
+    <!-- PC -->
     <div class="bg-gray-50 px-6 py-4 border-t flex flex-col md:flex-row items-center justify-between gap-4">
 
       <p class="text-xs text-gray-500 text-center md:text-left">
@@ -121,10 +183,9 @@ body{
     </div>
   </div>
 
-
-  <!-- ===== BACK BUTTON ===== -->
+  <!-- BACK -->
   <div class="text-center mt-12">
-    <a href="index.html#presentations"
+    <a href="index.html"
       class="inline-block border px-8 py-3 rounded-full text-sm font-semibold hover:bg-black hover:text-white transition">
       一覧に戻る
     </a>
@@ -140,8 +201,15 @@ body{
 </footer>
 
 
+<!-- ===== JS ===== -->
 
-<!-- ===== SCRIPT（元のまま） ===== -->
+<script>
+function toggleMenu(){
+  const m=document.getElementById("mobileMenu");
+  m.style.display = m.style.display==="flex" ? "none" : "flex";
+}
+</script>
+
 <script>
 const urlParams = new URLSearchParams(window.location.search);
 const presentationId = urlParams.get("id");
@@ -227,7 +295,7 @@ if(data){
   frameEl.src=data.pdfPath;
   downloadBtn.href=data.pdfPath;
   mobileOpenBtn.href=data.pdfPath;
-  }else{
+}else{
   titleEl.textContent="資料が見つかりません";
   catEl.textContent="Error";
   descEl.textContent="URLを確認してください";
