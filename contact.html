@@ -3,58 +3,60 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>お問い合わせ | Portfolio</title>
+<title>Contact | TechText Bridging</title>
 
 <style>
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:"Segoe UI",system-ui,sans-serif;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
 }
 
 body{
-  background: radial-gradient(circle at top,#1e293b,#020617);
-  color:#e5e7eb;
+  background:#f5f5f7;
   min-height:100vh;
   display:flex;
   align-items:center;
   justify-content:center;
+  color:#111;
 }
 
-/* ===== フォームカード ===== */
+/* ===== フォームカード（Apple風） ===== */
 .container{
   position:relative;
   width:100%;
   max-width:680px;
-  padding:40px;
-  background:rgba(15,23,42,0.85);
-  backdrop-filter: blur(18px);
-  border-radius:18px;
-  box-shadow:0 0 70px rgba(59,130,246,.25);
-  border:1px solid rgba(255,255,255,.08);
+  padding:48px;
+  background:rgba(255,255,255,0.75);
+  backdrop-filter:blur(20px);
+  border-radius:24px;
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.12),
+    0 2px 10px rgba(0,0,0,.05);
+  border:1px solid rgba(255,255,255,.6);
   animation:fadeUp .6s ease;
 }
 
 /* ===== 閉じるボタン ===== */
 .close-btn{
   position:absolute;
-  top:14px;
-  right:14px;
-  width:42px;
-  height:42px;
+  top:16px;
+  right:16px;
+  width:40px;
+  height:40px;
   border-radius:50%;
   border:none;
   font-size:20px;
-  background:rgba(255,255,255,.08);
-  color:#e5e7eb;
+  background:#f1f1f3;
+  color:#111;
   cursor:pointer;
   transition:.25s;
 }
 
 .close-btn:hover{
-  background:#ef4444;
-  transform:scale(1.1);
+  background:#e5e7eb;
+  transform:scale(1.08);
 }
 
 /* ===== 見出し ===== */
@@ -62,15 +64,15 @@ h1{
   font-size:2.2rem;
   text-align:center;
   margin-bottom:10px;
-  background:linear-gradient(90deg,#60a5fa,#22d3ee);
-  -webkit-background-clip:text;
-  color:transparent;
+  font-weight:700;
+  letter-spacing:-0.02em;
 }
 
 .subtitle{
   text-align:center;
-  color:#94a3b8;
-  margin-bottom:30px;
+  color:#6b7280;
+  margin-bottom:34px;
+  font-size:.95rem;
 }
 
 /* ===== フィールド ===== */
@@ -80,26 +82,26 @@ h1{
 
 label{
   display:block;
-  font-size:.9rem;
+  font-size:.85rem;
   margin-bottom:6px;
-  color:#cbd5f5;
+  color:#6b7280;
+  font-weight:600;
 }
 
 input, textarea, select{
   width:100%;
   padding:14px 16px;
-  border-radius:10px;
-  border:1px solid rgba(255,255,255,.1);
-  background:#020617;
-  color:white;
+  border-radius:12px;
+  border:1px solid #d1d5db;
+  background:#fff;
   font-size:1rem;
   transition:.25s;
 }
 
 input:focus, textarea:focus, select:focus{
   outline:none;
-  border-color:#3b82f6;
-  box-shadow:0 0 12px rgba(59,130,246,.5);
+  border-color:#0071e3;
+  box-shadow:0 0 0 3px rgba(0,113,227,.15);
 }
 
 textarea{
@@ -112,26 +114,28 @@ button[type="submit"]{
   width:100%;
   padding:16px;
   border:none;
-  border-radius:12px;
+  border-radius:14px;
   font-size:1.05rem;
   font-weight:600;
-  background:linear-gradient(135deg,#3b82f6,#06b6d4);
+  background:#0071e3;
   color:white;
   cursor:pointer;
-  transition:.3s;
-  box-shadow:0 0 18px rgba(59,130,246,.5);
+  transition:.25s;
+  box-shadow:0 6px 18px rgba(0,113,227,.35);
 }
 
 button[type="submit"]:hover{
   transform:translateY(-2px);
-  box-shadow:0 0 26px rgba(59,130,246,.9);
+  background:#0062c4;
+  box-shadow:0 10px 28px rgba(0,113,227,.45);
 }
 
 /* ===== 成功メッセージ ===== */
 .success{
   text-align:center;
   margin-top:20px;
-  color:#22c55e;
+  color:#16a34a;
+  font-weight:600;
   display:none;
 }
 
@@ -145,7 +149,7 @@ button[type="submit"]:hover{
 @media(max-width:640px){
   .container{
     margin:20px;
-    padding:28px;
+    padding:32px 22px;
   }
 }
 </style>
