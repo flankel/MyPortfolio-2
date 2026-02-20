@@ -101,31 +101,6 @@ body{
   text-shadow:
     0 2px 8px rgba(0,0,0,.45),
     0 8px 30px rgba(0,0,0,.35);
-  animation:fadeUp 1s ease forwards;
-  opacity:0;
-}
-
-.hero-amp{
-  display:block;
-  font-size:0.6em;
-  font-weight:600;
-  margin:10px 0;
-  opacity:.85;
-  letter-spacing:0.15em;
-}
-
-.hero-sub{
-  margin-top:24px;
-  font-size:clamp(14px,2vw,20px);
-  opacity:.9;
-  letter-spacing:0.12em;
-  text-transform:uppercase;
-  text-shadow:0 2px 8px rgba(0,0,0,.4);
-}
-
-@keyframes fadeUp{
-  from{transform:translateY(30px);opacity:0;}
-  to{transform:translateY(0);opacity:1;}
 }
 
 /* ===== セクション ===== */
@@ -177,34 +152,24 @@ section{padding:100px 20px; text-align:center;}
 }
 
 .card-body{
-  padding:20px;
+  padding:0;
 }
 
-/* ★ スタイリッシュなタイトル */
+/* ★ タイトル帯 */
 .card-title{
-  display:inline-block;
+  margin:0;
+  padding:16px 20px;
+  background:linear-gradient(135deg,#0f4c81,#1a73e8);
+  color:#fff;
   font-size:18px;
   font-weight:700;
-  margin-bottom:12px;
-  padding:6px 12px;
-
-  background:linear-gradient(135deg,#0071e3,#4aa3ff);
-  color:#fff;
-
-  border-radius:999px;
-  letter-spacing:0.03em;
-
-  box-shadow:0 4px 12px rgba(0,113,227,.25);
-  transition:.25s;
+  letter-spacing:.03em;
 }
 
-.card:hover .card-title{
-  box-shadow:0 8px 22px rgba(0,113,227,.35);
-  transform:translateY(-1px);
-}
-
-/* 説明文 */
+/* ★ 説明文（変更なし） */
 .card-desc{
+  margin:0;
+  padding:18px 20px;
   font-size:14px;
   color:#666;
   line-height:1.7;
@@ -280,8 +245,6 @@ function toggleMenu(){
   const m=document.getElementById("mobileMenu");
   m.style.display = m.style.display==="flex" ? "none" : "flex";
 }
-
-/* ===== 元データ ===== */
 
 const data = {
 web: [
