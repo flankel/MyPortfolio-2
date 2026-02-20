@@ -50,6 +50,55 @@ body{
 
 .nav-links a:hover::after{width:100%;}
 
+/* Contact CTA Button */
+.contact-cta {
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: white !important;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 18px rgba(0,114,255,0.35);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover animation */
+.contact-cta:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 28px rgba(0,114,255,0.55);
+}
+
+/* Subtle shine effect */
+.contact-cta::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: rgba(255,255,255,0.35);
+  transform: rotate(25deg);
+  transition: 0.6s;
+}
+
+.contact-cta:hover::after {
+  left: 130%;
+}
+
+.contact-cta-mobile {
+  display: block;
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: white !important;
+  text-align: center;
+  padding: 14px;
+  border-radius: 999px;
+  font-weight: 600;
+  margin-top: 12px;
+  box-shadow: 0 6px 20px rgba(0,114,255,0.4);
+}
+
 /* ===== ハンバーガー ===== */
 .hamburger{display:none; flex-direction:column; cursor:pointer;}
 .hamburger span{width:24px;height:3px;background:#111;margin:4px 0;}
@@ -281,9 +330,13 @@ footer{
 <div class="nav">
   <div class="nav-logo">TechText Bridging</div>
   <div class="nav-links">
-    <a href="#web">Web Development</a>
-    <a href="#slides">Presentaion Design</a>
-  </div>
+  <a href="#web">Web Development</a>
+  <a href="#slides">Presentation Design</a>
+
+  <a href="contact.html" class="contact-cta">
+    Contact
+  </a>
+  </div>  
   <div class="hamburger" onclick="toggleMenu()">
     <span></span><span></span><span></span>
   </div>
@@ -292,8 +345,12 @@ footer{
 <div id="mobileMenu" class="mobile-menu">
   <a href="#web">Web Development</a>
   <a href="#slides">Presentation Design</a>
-</div>
 
+  <a href="contact.html" class="contact-cta-mobile">
+    Contact
+  </a>
+</div>
+  
 <div class="hero">
   <div class="hero-content">
   <h1 class="hero-title">
