@@ -93,16 +93,91 @@ body{
 
 .hero-content{position:relative; z-index:1;}
 
+/* ===== Hero Animation Title ===== */
+
 .hero-title{
-  font-size:clamp(32px,6vw,64px);
+  font-size:clamp(34px,6vw,70px);
   font-weight:800;
   line-height:1.1;
   letter-spacing:-0.02em;
-  text-shadow:
-    0 2px 8px rgba(0,0,0,.45),
-    0 8px 30px rgba(0,0,0,.35);
+  text-align:center;
 }
 
+.hero-title .line,
+.hero-title .amp{
+  display:block;
+  opacity:0;
+}
+
+/* --- 上段 --- */
+.line1{
+  animation:fadeSlide 0.9s ease forwards;
+}
+
+/* --- & --- */
+.amp{
+  font-size:0.6em;
+  font-weight:600;
+  margin:14px 0;
+  letter-spacing:0.2em;
+  opacity:0.9;
+
+  animation:ampPop 0.8s ease forwards;
+  animation-delay:0.5s;
+}
+
+/* --- 下段 --- */
+.line2{
+  animation:fadeSlide 0.9s ease forwards;
+  animation-delay:0.8s;
+}
+
+/* --- サブタイトル --- */
+.hero-sub{
+  margin-top:28px;
+  font-size:clamp(14px,2vw,20px);
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+
+  opacity:0;
+  animation:fadeIn 1s ease forwards;
+  animation-delay:1.3s;
+}
+
+/* ===== アニメーション ===== */
+
+@keyframes fadeSlide{
+  from{
+    transform:translateY(40px);
+    opacity:0;
+    filter:blur(6px);
+  }
+  to{
+    transform:translateY(0);
+    opacity:1;
+    filter:blur(0);
+  }
+}
+
+@keyframes ampPop{
+  0%{
+    transform:scale(0.5);
+    opacity:0;
+    filter:blur(6px);
+  }
+  60%{
+    transform:scale(1.15);
+    opacity:1;
+  }
+  100%{
+    transform:scale(1);
+  }
+}
+
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
 /* ===== セクション ===== */
 section{padding:100px 20px; text-align:center;}
 
@@ -218,13 +293,13 @@ footer{
 
 <div class="hero">
   <div class="hero-content">
-    <h1 class="hero-title">
-      Web Development
-      <br><span class="hero-amp">&</span><br>
-      Presentation Design
-    </h1>
-    <p class="hero-sub">TechText Bridging</p>
-  </div>
+  <h1 class="hero-title">
+    <span class="line line1">Web Development</span>
+    <span class="amp">&</span>
+    <span class="line line2">Presentation Design</span>
+  </h1>
+  <p class="hero-sub">TechText Bridging</p>
+</div>
 </div>
 
 <section id="web">
