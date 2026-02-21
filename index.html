@@ -13,18 +13,22 @@ body{
   color:#111;
 }
 
-/* ===== ナビ ===== */
+/* ===== ヘッダーラッパー（2段構成用に追加） ===== */
+.header-wrapper {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+/* ===== ナビ（上段） ===== */
 .nav{
-  position:fixed;
-  top:0;
-  width:100%;
   background:rgba(255,255,255,.95);
   backdrop-filter:blur(20px);
   display:flex;
   justify-content:space-between;
   align-items:center;
   padding:14px 20px;
-  z-index:1000;
   box-shadow:0 2px 10px rgba(0,0,0,.05);
   box-sizing:border-box;
 }
@@ -87,37 +91,37 @@ body{
   left: 130%;
 }
 
-.contact-cta-mobile {
-  display: block;
-  background: linear-gradient(135deg, #00c6ff, #0072ff);
-  color: white !important;
-  text-align: center;
-  padding: 14px;
-  border-radius: 999px;
+/* ===== ぶら下がりナビ（下段・モバイル用） ===== */
+.mobile-hanging-nav {
+  display: none; /* デフォルトは非表示 */
+  background: rgba(245, 245, 247, 0.95);
+  backdrop-filter: blur(20px);
+  border-top: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 4px 10px rgba(0,0,0,.05);
+  justify-content: space-around;
+  padding: 8px 0;
+}
+
+.mobile-hanging-nav a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #666;
+  font-size: 10px;
   font-weight: 600;
-  margin-top: 12px;
-  box-shadow: 0 6px 20px rgba(0,114,255,0.4);
+  gap: 4px;
+  transition: color 0.3s;
 }
 
-/* ===== ハンバーガー ===== */
-.hamburger{display:none; flex-direction:column; cursor:pointer;}
-.hamburger span{width:24px;height:3px;background:#111;margin:4px 0;}
-
-.mobile-menu{
-  display:none;
-  position:fixed;
-  top:60px; right:0;
-  width:220px;
-  background:#fff;
-  box-shadow:-5px 0 20px rgba(0,0,0,.1);
-  padding:20px;
-  flex-direction:column;
+.mobile-hanging-nav a:hover,
+.mobile-hanging-nav a:active {
+  color: #0071e3;
 }
 
-.mobile-menu a{
-  margin:12px 0;
-  text-decoration:none;
-  color:#111;
+.mobile-hanging-nav svg {
+  width: 22px;
+  height: 22px;
 }
 
 /* ===== ヒーロー ===== */
@@ -320,35 +324,37 @@ footer{
 /* ===== レスポンシブ ===== */
 @media(max-width:768px){
   .nav-links{display:none;}
-  .hamburger{display:flex;}
+  .mobile-hanging-nav { display: flex; } /* スマホ幅でぶら下がりナビを表示 */
 }
 </style>
 </head>
 
 <body>
 
-<div class="nav">
-  <div class="nav-logo">TechText Bridging</div>
-  <div class="nav-links">
-  <a href="#web">Web Development</a>
-  <a href="#slides">Presentation Design</a>
-
-  <a href="contact.html" class="contact-cta">
-    Contact
-  </a>
-  </div>  
-  <div class="hamburger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
+<div class="header-wrapper">
+  <div class="nav">
+    <div class="nav-logo">TechText Bridging</div>
+    <div class="nav-links">
+      <a href="#web">Web Development</a>
+      <a href="#slides">Presentation Design</a>
+      <a href="contact.html" class="contact-cta">Contact</a>
+    </div>  
   </div>
-</div>
-
-<div id="mobileMenu" class="mobile-menu">
-  <a href="#web">Web Development</a>
-  <a href="#slides">Presentation Design</a>
-
-  <a href="contact.html" class="contact-cta-mobile">
-    Contact
-  </a>
+  
+  <div class="mobile-hanging-nav">
+    <a href="#web">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+      <span>WEB</span>
+    </a>
+    <a href="#slides">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path></svg>
+      <span>SLIDES</span>
+    </a>
+    <a href="contact.html">
+      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+      <span>CONTACT</span>
+    </a>
+  </div>
 </div>
   
 <div class="hero">
@@ -377,11 +383,6 @@ footer{
 </footer>
 
 <script>
-function toggleMenu(){
-  const m=document.getElementById("mobileMenu");
-  m.style.display = m.style.display==="flex" ? "none" : "flex";
-}
-
 const data = {
 web: [
 {title:"TaskFlow",description:"直感的なUIでタスク管理を効率化するSaaS型ランディングページ。生産性向上をテーマに設計。",url:"https://flankel.github.io/TaskFlow/",image:"https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80"},
